@@ -8,12 +8,14 @@ import '../styles/style.scss';
 import FilmIndex from './FilmIndex';
 import Login from './auth/Login.js';
 import Register from './auth/Register.js';
+import Navbar from './Navbar';
 
 const App = () => (
   <BrowserRouter>
+    <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/FilmIndex" element={<FilmIndex />} />
+      <Route path="/filmIndex" element={<FilmIndex />} />
       <Route path="/film/continent/:continent" element={<FilmsByContinent />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
