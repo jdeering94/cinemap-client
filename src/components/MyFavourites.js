@@ -1,27 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { getAllFilmsByContinent } from '../api/films';
+import { getAllLikedFilmsForUser } from '../api/films';
 
-const FilmsByContinent = () => {
-  const { continent } = useParams();
-  const [films, setFilm] = React.useState(null);
+const MyFavourites = () => {
+  const { userId } = useParams();
+  const [films, setFilms] = React.useState(null);
 
   React.useEffect(() => {
     const getData = async () => {
-      const filmList = await getAllFilmsByContinent(continent);
-      const sortedList = filmList.sort((a, b) =>
+      const myFavs = await getAllLikedFilmsForUser(userId);
+      console.log('this is my favs', myFavs);
+      const sortedMyFavs = myFavs.sort((a, b) =>
         a.title > b.title ? 1 : b.title > a.title ? -1 : 0
       );
-      console.log(continent);
-      setFilm(sortedList);
+      setFilms(sortedMyFavs);
     };
     getData();
   }, []);
-  console.log(films);
+
   return (
     <>
-      <h1 className="title">Films from {continent}</h1>
+      <h1 className="title">My Favs</h1>
       {films ? (
         <div className="container">
           <div className="columns is-multiline">
@@ -48,4 +48,4 @@ const FilmsByContinent = () => {
   );
 };
 
-export default FilmsByContinent;
+export default MyFavourites;
