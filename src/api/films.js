@@ -32,3 +32,13 @@ export const getAllLikedFilmsForUser = async (userId) => {
   const { data } = await axios.request(options);
   return data;
 };
+
+export const getFilmById = async (filmId) => {
+  const options = {
+    method: 'GET',
+    url: `/api/film/${filmId}`,
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};

@@ -10,6 +10,7 @@ import Login from './auth/Login.js';
 import Register from './auth/Register.js';
 import Navbar from './Navbar';
 import MyFavourites from './MyFavourites';
+import ShowFilm from './ShowFilm';
 
 const App = () => (
   <BrowserRouter>
@@ -21,6 +22,7 @@ const App = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/users/:userId/myFavourites" element={<MyFavourites />} />
+      <Route path="/film/:filmId" element={<ShowFilm />} />
     </Routes>
   </BrowserRouter>
 );
