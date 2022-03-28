@@ -8,10 +8,11 @@ const FilmIndex = () => {
   React.useEffect(() => {
     const getData = async () => {
       const films = await getAllFilms();
-      const sortedFilms = films.sort((a, b) =>
-        a.title > b.title ? 1 : b.title > a.title ? -1 : 0
+      setFilms(
+        films.sort((a, b) =>
+          a.title > b.title ? 1 : b.title > a.title ? -1 : 0
+        )
       );
-      setFilms(sortedFilms);
     };
     getData();
   }, []);
