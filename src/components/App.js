@@ -9,6 +9,7 @@ import FilmIndex from './FilmIndex';
 import Login from './auth/Login.js';
 import Register from './auth/Register.js';
 import Navbar from './Navbar';
+import MyFavourites from './MyFavourites';
 
 const App = () => (
   <BrowserRouter>
@@ -19,6 +20,7 @@ const App = () => (
       <Route path="/film/continent/:continent" element={<FilmsByContinent />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/users/:userId/myFavourites" element={<MyFavourites />} />
     </Routes>
   </BrowserRouter>
 );

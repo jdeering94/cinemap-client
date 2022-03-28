@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getLoggedInUserId } from '../lib/authentication';
 
 const Navbar = () => {
+  const userId = getLoggedInUserId();
   return (
     <nav className="navbar">
       <div className="navbar-brand">
@@ -17,6 +19,11 @@ const Navbar = () => {
         <Link to="/register" className="navbar-item">
           Register
         </Link>
+        {userId && (
+          <Link to={`/users/${userId}/myFavourites`} className="navbar-item">
+            My Favs
+          </Link>
+        )}
       </div>
     </nav>
   );
