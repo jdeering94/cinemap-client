@@ -5,7 +5,6 @@ import '../styles/style.scss';
 
 const App = () => (
   <BrowserRouter>
-    <Navbar />
     <Routes>
       <Route path="/" element={<h1>Hello world</h1>} />
     </Routes>
