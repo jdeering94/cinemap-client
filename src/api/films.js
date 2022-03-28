@@ -20,13 +20,15 @@ export const getAllFilmsByContinent = async (continent) => {
   return data;
 };
 
-<<<<<<< HEAD
 export const createFilm = async (filmData) => {
   const options = {
     method: 'POST',
     url: '/api/film',
     data: filmData,
-=======
+  };
+  const { data } = await axios.request(options);
+  return data;
+};
 export const getAllLikedFilmsForUser = async (userId) => {
   const options = {
     method: 'GET',
@@ -44,7 +46,6 @@ export const getFilmById = async (filmId) => {
   const options = {
     method: 'GET',
     url: `/api/film/${filmId}`,
->>>>>>> main
   };
 
   const { data } = await axios.request(options);
