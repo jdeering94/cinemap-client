@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Home from './Home.js';
+
 import '../styles/style.scss';
 
 const App = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<h1>Hello world</h1>} />
+      <Route path="/" element={<Home />} />
     </Routes>
   </BrowserRouter>
 );
