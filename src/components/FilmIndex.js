@@ -25,7 +25,9 @@ const FilmIndex = () => {
             {films.map((film) => (
               <div key={film._id} className="column card m-3 is-one-fifth">
                 <Link to={`/film/${film._id}`}>
-                  <h2 className="card-header">{film.title}</h2>
+                  <h2 className="card-header">
+                    {film.title} - {film.country}
+                  </h2>
                   <div className="card-image">
                     <figure className="image is-4by5">
                       <img src={film.img} alt={film.title} />
