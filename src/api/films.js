@@ -80,3 +80,28 @@ export const deleteComment = async (filmId, commentId) => {
   const { data } = await axios.request(options);
   return data;
 };
+
+export const addLikedFilm = async (filmId) => {
+  const options = {
+    method: 'PUT',
+    url: `/api/film/${filmId}/like`,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};
+export const removeLikedFilm = async (filmId) => {
+  const options = {
+    method: 'PUT',
+    url: `/api/film/${filmId}/removeLike`,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};

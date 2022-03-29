@@ -1,5 +1,11 @@
 import React from 'react';
-import { getFilmById, createComment, deleteComment } from '../api/films';
+import {
+  getFilmById,
+  createComment,
+  deleteComment,
+  addLikedFilm,
+  removeLikedFilm,
+} from '../api/films';
 import { useParams } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/authentication';
 import { getCurrentUserById } from '../api/auth';
@@ -50,6 +56,16 @@ const ShowFilm = () => {
     setFilm(data);
   };
 
+  const handleLike = async () => {
+    const data = await addLikedFilm(filmId);
+    setFilm(data);
+  };
+
+  const handleUnlike = async () => {
+    const data = await removeLikedFilm(filmId);
+    setFilm(data);
+  };
+
   return (
     <div className="container">
       <div className="columns">
@@ -66,6 +82,13 @@ const ShowFilm = () => {
             <p>Released in: {film.releaseYear}</p>
             <p>Runtime: {film.runTime} min</p>
             <p>Description: {film.description}</p>
+            <p>Likes: {film.likedBy.length}</p>{' '}
+            <button className="button is-info" onClick={handleLike}>
+              Like
+            </button>
+            <button className="button is-dark" onClick={handleUnlike}>
+              Unlike
+            </button>
           </div>
 
           <form onSubmit={handleCommentSubmit}>
