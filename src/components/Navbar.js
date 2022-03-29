@@ -36,6 +36,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link onClick={handleClose} to="/about">
+                About
+              </Link>
+            </li>
+            <li>
               <Link onClick={handleClose} to="/filmIndex">
                 Film Index
               </Link>
@@ -58,6 +63,11 @@ const Navbar = () => {
                     to={`/users/${userId}/myFavourites`}
                   >
                     My Favs
+                  </Link>
+                </li>
+                <li>
+                  <Link onClick={handleClose} to="/randomFilm">
+                    Random Film
                   </Link>
                 </li>
                 <li>

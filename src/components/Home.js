@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <section className="hero">
+    <section className="hero is-full-height-with-navbar">
       <div className="hero-body">
         <div className="container">
           <p className="title has-text-centered">

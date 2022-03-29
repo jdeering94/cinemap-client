@@ -1,0 +1,22 @@
+.hamburger {
+  position: fixed;
+}
+
+.offcanvas-backdrop .offcanvas-start {
+  // position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  nav.ul {
+    width: 80%;
+    padding-left: 0;
+    padding-top: 10px;
+
+    li {
+      border: 2px lightgrey;
+      list-style: none;
+      margin: 10px 0;
+    }
+  }
+}

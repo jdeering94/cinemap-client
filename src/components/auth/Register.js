@@ -1,7 +1,9 @@
 import React from 'react';
 import { registerUser } from '../../api/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [usernameValue, setUsernameValue] = React.useState('');
   const [emailValue, setEmailValue] = React.useState('');
   const [passwordValue, setPasswordValue] = React.useState('');
@@ -30,6 +32,7 @@ const Register = () => {
       password: passwordValue,
       passwordConfirmation: passwordConfirmationValue,
     });
+    navigate('/login');
   };
 
   return (
