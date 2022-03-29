@@ -1,30 +1,82 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/authentication';
+import { Divide as Hamburger } from 'hamburger-react';
+import { Offcanvas } from 'react-bootstrap';
 
 const Navbar = () => {
   const userId = getLoggedInUserId();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  // const handleLogout = () => {
+  //   removeToken()
+  //   removeUserId()
+  //   setIsLoggedIn(false)
+  //   history.push('/')
+  // }
+
+  const options = [
+    {
+      name: 'Disable body scrolling',
+      scroll: false,
+      backdrop: true,
+    },
+  ];
+
   return (
-    <nav className="navbar">
-      <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
-          Home
-        </Link>
-        <Link to="/filmIndex" className="navbar-item">
-          Film Index
-        </Link>
-        <Link to="/login" className="navbar-item">
-          Login
-        </Link>
-        <Link to="/register" className="navbar-item">
-          Register
-        </Link>
-        {userId && (
-          <Link to={`/users/${userId}/myFavourites`} className="navbar-item">
-            My Favs
-          </Link>
-        )}
-      </div>
+    <nav>
+      <Hamburger color="#000000" toggled={show} toggle={setShow} {...options} />
+      <Offcanvas show={show}>
+        <div className="hamburger">
+          <ul>
+            <li>
+              <Link onClick={handleClose} to="/">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleClose} to="/filmIndex">
+                Film Index
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleClose} to="/login">
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleClose} to="/register">
+                Register
+              </Link>
+            </li>
+            {userId ? (
+              <>
+                <li>
+                  <Link
+                    onClick={handleClose}
+                    to={`/users/${userId}/myFavourites`}
+                  >
+                    My Favs
+                  </Link>
+                </li>
+                <li>
+                  <Link onClick={handleClose} to="/create">
+                    Create
+                  </Link>
+                </li>
+                <li>
+                  <Link onClick={handleClose} to="/logout">
+                    Logout
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
+          </ul>
+        </div>
+      </Offcanvas>
     </nav>
   );
 };
