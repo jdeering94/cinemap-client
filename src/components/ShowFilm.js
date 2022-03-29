@@ -8,14 +8,16 @@ const ShowFilm = () => {
   const { filmId } = useParams();
   const [film, setFilm] = React.useState(null);
   const [commentValue, setCommentValue] = React.useState('');
-  const [ratingValue, setRatingValue] = React.useState(null);
-  const [username, SetUsername] = React.useState(getLoggedInUserId());
+  const [ratingValue, setRatingValue] = React.useState(1);
+  const [username, SetUsername] = React.useState('');
 
   React.useEffect(() => {
     const getData = async () => {
       const filmdata = await getFilmById(filmId);
-      const user = await getCurrentUserById(getLoggedInUserId());
-      SetUsername(user.username);
+      if (window.sessionStorage.token) {
+        const user = await getCurrentUserById(getLoggedInUserId());
+        SetUsername(user.username);
+      }
       setFilm(filmdata);
     };
     getData();
@@ -45,9 +47,7 @@ const ShowFilm = () => {
 
   const handleCommentDelete = async (commentId) => {
     const data = await deleteComment(filmId, commentId);
-    console.log('comment deleted');
     setFilm(data);
-    console.log('comment deleted and film updated');
   };
 
   return (
