@@ -1,7 +1,9 @@
 import React from 'react';
 import { loginUser } from '../../api/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [emailValue, setEmailValue] = React.useState('');
   const [passwordValue, setPasswordValue] = React.useState('');
 
@@ -15,6 +17,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     loginUser({ email: emailValue, password: passwordValue });
+    navigate('/');
   };
 
   return (
