@@ -28,3 +28,16 @@ export const registerUser = async (credentials) => {
   console.log(data);
   return data.message;
 };
+
+export const getCurrentUserById = async (userId) => {
+  const options = {
+    method: 'GET',
+    url: `/api/users/currentUser/${userId}`,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};

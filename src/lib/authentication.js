@@ -3,7 +3,6 @@ export function getLoggedInUserId() {
   if (!token) return false; // safety in case no token
 
   const userObject = JSON.parse(window.atob(token.split('.')[1]));
-  console.log(userObject.userId);
   return userObject.userId;
 }
 
