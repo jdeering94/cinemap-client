@@ -53,3 +53,30 @@ export const getFilmById = async (filmId) => {
   const { data } = await axios.request(options);
   return data;
 };
+
+export const createComment = async (filmId, comment) => {
+  const options = {
+    method: 'POST',
+    url: `/api/film/${filmId}/comments`,
+    data: comment,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};
+
+export const deleteComment = async (filmId, commentId) => {
+  const options = {
+    method: 'DELETE',
+    url: `/api/film/${filmId}/comment/${commentId}`,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};
