@@ -26,9 +26,11 @@ export const createFilm = async (filmData) => {
     url: '/api/film',
     data: filmData,
   };
+
   const { data } = await axios.request(options);
   return data;
 };
+
 export const getAllLikedFilmsForUser = async (userId) => {
   const options = {
     method: 'GET',
