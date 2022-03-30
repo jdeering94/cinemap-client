@@ -15,6 +15,7 @@ import Navbar from './Navbar';
 import MyFavourites from './MyFavourites';
 import ShowFilm from './ShowFilm';
 import RandomFilm from './RandomFilm';
+import UserList from './UserList';
 
 const App = () => (
   <BrowserRouter>
@@ -30,6 +31,7 @@ const App = () => (
       <Route path="/users/:userId/myFavourites" element={<MyFavourites />} />
       <Route path="/film/:filmId" element={<ShowFilm />} />
       <Route path="/randomFilm" element={<RandomFilm />} />
+      <Route path="/userList" element={<UserList />}></Route>
     </Routes>
   </BrowserRouter>
 );
