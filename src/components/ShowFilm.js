@@ -8,7 +8,7 @@ import {
   removeLikedFilm,
 } from '../api/films';
 import { useParams } from 'react-router-dom';
-import { getLoggedInUserId } from '../lib/authentication';
+import { getLoggedInUserId, isAdmin } from '../lib/authentication';
 import { averageRating, isLiked } from '../lib/ratingFunctions';
 import { getCurrentUserById } from '../api/auth';
 
@@ -33,6 +33,8 @@ const ShowFilm = () => {
     getData();
   }, []);
 
+  console.log('isAdmin', isAdmin());
+
   if (!film) {
     return <p>Loading...</p>;
   }
@@ -42,19 +44,25 @@ const ShowFilm = () => {
   };
 
   const handleRating = (rate) => {
-    console.log(rate);
     setRatingValue(rate / 10);
   };
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    const data = await createComment(filmId, {
-      text: commentValue,
-      rating: ratingValue,
-      username: username,
-    });
-    setCommentValue('');
-    setFilm(data);
+    if (
+      film.comments.some((comment) => comment.createdBy === getLoggedInUserId())
+    ) {
+      window.alert('you have already reviewed this film!');
+    } else {
+      const data = await createComment(filmId, {
+        text: commentValue,
+        rating: ratingValue,
+        username: username,
+      });
+      setCommentValue('');
+      setRatingValue(1);
+      setFilm(data);
+    }
   };
 
   const handleCommentDelete = async (commentId) => {
@@ -110,7 +118,7 @@ const ShowFilm = () => {
             <form onSubmit={handleCommentSubmit}>
               <div className="form">
                 <label htmlFor="comment" className="label">
-                  Post a new a Comment
+                  Post a Review!
                 </label>
                 <div className="control">
                   <textarea
@@ -124,7 +132,7 @@ const ShowFilm = () => {
                     value={ratingValue}
                     iconsCount={10}
                   />
-                  <input type="submit" value="Post Comment" />
+                  <input type="submit" value="Post Review" />
                 </div>
               </div>
             </form>
@@ -146,7 +154,7 @@ const ShowFilm = () => {
                         className="button is-danger"
                         onClick={() => handleCommentDelete(comment._id)}
                       >
-                        Delete Comment
+                        Delete Review
                       </button>
                     )}
                   </div>

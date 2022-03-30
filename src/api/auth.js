@@ -41,3 +41,37 @@ export const getCurrentUserById = async (userId) => {
   const { data } = await axios.request(options);
   return data;
 };
+
+export const getAllUsers = async () => {
+  const options = {
+    method: 'GET',
+    url: 'api/users',
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};
+
+export const deleteUser = async (userId) => {
+  const options = {
+    method: 'DELETE',
+    url: `api/users/${userId}`,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};
+
+export const removeToken = () => {
+  window.sessionStorage.removeItem('token');
+};
+
+export const removeUserId = () => {
+  window.sessionStorage.removeItem('userId');
+};
