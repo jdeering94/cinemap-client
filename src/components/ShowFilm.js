@@ -1,4 +1,5 @@
 import React from 'react';
+import { Rating } from 'react-simple-star-rating';
 import {
   getFilmById,
   createComment,
@@ -8,6 +9,7 @@ import {
 } from '../api/films';
 import { useParams } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/authentication';
+import { averageRating } from '../lib/ratingFunctions';
 import { getCurrentUserById } from '../api/auth';
 
 const ShowFilm = () => {
@@ -36,8 +38,10 @@ const ShowFilm = () => {
   const handleCommentChange = (e) => {
     setCommentValue(e.target.value);
   };
-  const handleRatingChange = (e) => {
-    setRatingValue(e.target.value);
+
+  const handleRating = (rate) => {
+    console.log(rate);
+    setRatingValue(rate / 10);
   };
 
   const handleCommentSubmit = async (e) => {
@@ -66,6 +70,8 @@ const ShowFilm = () => {
     setFilm(data);
   };
 
+  const average = averageRating(film);
+
   return (
     <div className="container">
       <div className="columns">
@@ -82,61 +88,68 @@ const ShowFilm = () => {
             <p>Released in: {film.releaseYear}</p>
             <p>Runtime: {film.runTime} min</p>
             <p>Description: {film.description}</p>
-            <p>Likes: {film.likedBy.length}</p>{' '}
-            <button className="button is-info" onClick={handleLike}>
-              Like
-            </button>
-            <button className="button is-dark" onClick={handleUnlike}>
-              Unlike
-            </button>
+            <p>Likes: {film.likedBy.length}</p>
+            {average ? <p>Average Rating: {average}</p> : <p>Not yet rated</p>}
+            {getLoggedInUserId() && (
+              <>
+                <button className="button is-info" onClick={handleLike}>
+                  Like
+                </button>
+                <button className="button is-dark" onClick={handleUnlike}>
+                  Unlike
+                </button>
+              </>
+            )}
           </div>
 
-          <form onSubmit={handleCommentSubmit}>
-            <div className="form">
-              <label htmlFor="comment" className="label">
-                Post a new a Comment
-              </label>
-              <div className="control">
-                <textarea
-                  name="text"
-                  className="input"
-                  value={commentValue}
-                  onChange={handleCommentChange}
-                ></textarea>
-                <input
-                  type="number"
-                  name="rating"
-                  min="1"
-                  max="10"
-                  value={ratingValue}
-                  onChange={handleRatingChange}
-                />
-                <input type="submit" value="Post Comment" />
-              </div>
-            </div>
-          </form>
-
-          <div>
-            {film.comments.map((comment) => {
-              return (
-                <div key={comment._id}>
-                  <p>{comment.text}</p>
-                  <p>{comment.rating}/10</p>
-                  <p>{comment.username}</p>
-                  {getLoggedInUserId() === comment.createdBy && (
-                    <button
-                      key={comment._id}
-                      type="button"
-                      className="button is-danger"
-                      onClick={() => handleCommentDelete(comment._id)}
-                    >
-                      Delete Comment
-                    </button>
-                  )}
+          {getLoggedInUserId() && (
+            <form onSubmit={handleCommentSubmit}>
+              <div className="form">
+                <label htmlFor="comment" className="label">
+                  Post a new a Comment
+                </label>
+                <div className="control">
+                  <textarea
+                    name="text"
+                    className="input"
+                    value={commentValue}
+                    onChange={handleCommentChange}
+                  ></textarea>
+                  <Rating
+                    onClick={handleRating}
+                    value={ratingValue}
+                    iconsCount={10}
+                  />
+                  <input type="submit" value="Post Comment" />
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            </form>
+          )}
+
+          {film.comments.length > 0 && (
+            <div className="card p-4 m-3">
+              <h1>Reviews</h1>
+              {film.comments.map((comment) => {
+                return (
+                  <div key={comment._id}>
+                    <p>{comment.text}</p>
+                    <p>{comment.rating} ⭐️</p>
+                    <p>{comment.username}</p>
+                    {getLoggedInUserId() === comment.createdBy && (
+                      <button
+                        key={comment._id}
+                        type="button"
+                        className="button is-danger"
+                        onClick={() => handleCommentDelete(comment._id)}
+                      >
+                        Delete Comment
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>
