@@ -29,7 +29,7 @@ const Navbar = () => {
       {show && (
         <div>
           <div>
-            <ul>
+            <ul className="navlist">
               <li>
                 <Link onClick={handleClose} to="/">
                   Home
