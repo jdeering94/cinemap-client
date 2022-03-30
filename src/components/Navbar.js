@@ -8,6 +8,7 @@ const Navbar = () => {
   const userId = getLoggedInUserId();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  // const params = useParams();
   // const handleLogout = () => {
   //   removeToken()
   //   removeUserId()
@@ -66,7 +67,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={handleClose} to="/randomFilm">
+                    <Link onClick={handleClose} to={'/randomFilm'}>
                       Random Film
                     </Link>
                   </li>
