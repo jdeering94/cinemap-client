@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getLoggedInUserId } from '../lib/authentication';
+import { getLoggedInUserId, isAdmin } from '../lib/authentication';
 import { Divide as Hamburger } from 'hamburger-react';
 
 const Navbar = () => {
@@ -84,6 +84,13 @@ const Navbar = () => {
                 </>
               ) : (
                 <></>
+              )}
+              {isAdmin() && (
+                <li>
+                  <Link onClick={handleClose} to="/userList">
+                    User List
+                  </Link>
+                </li>
               )}
             </ul>
           </div>
