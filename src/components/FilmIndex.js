@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getAllFilms } from '../api/films';
+import { averageRating } from '../lib/ratingFunctions';
 
 const FilmIndex = () => {
   const [films, setFilms] = React.useState(null);
@@ -33,6 +34,9 @@ const FilmIndex = () => {
                     <figure className="image is-4by5">
                       <img src={film.img} alt={film.title} />
                     </figure>
+                    {film.comments.length > 0 && (
+                      <p>{averageRating(film)} ⭐️</p>
+                    )}
                   </div>
                 </Link>
               </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { getAllFilmsByContinent } from '../api/films';
+import { averageRating } from '../lib/ratingFunctions';
 
 const FilmsByContinent = () => {
   const { continent } = useParams();
@@ -35,6 +36,9 @@ const FilmsByContinent = () => {
                     <figure className="image is-4by5">
                       <img src={film.img} alt={film.title} />
                     </figure>
+                    {film.comments.length > 0 && (
+                      <p>{averageRating(film)} ⭐️</p>
+                    )}
                   </div>
                 </Link>
               </div>
