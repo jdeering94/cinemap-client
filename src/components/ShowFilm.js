@@ -9,7 +9,7 @@ import {
 } from '../api/films';
 import { useParams } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/authentication';
-import { averageRating } from '../lib/ratingFunctions';
+import { averageRating, isLiked } from '../lib/ratingFunctions';
 import { getCurrentUserById } from '../api/auth';
 
 const ShowFilm = () => {
@@ -18,6 +18,7 @@ const ShowFilm = () => {
   const [commentValue, setCommentValue] = React.useState('');
   const [ratingValue, setRatingValue] = React.useState(1);
   const [username, SetUsername] = React.useState('');
+  const [liked, setLiked] = React.useState(null);
 
   React.useEffect(() => {
     const getData = async () => {
@@ -25,6 +26,7 @@ const ShowFilm = () => {
       if (window.sessionStorage.token) {
         const user = await getCurrentUserById(getLoggedInUserId());
         SetUsername(user.username);
+        setLiked(isLiked(user, filmdata));
       }
       setFilm(filmdata);
     };
@@ -60,14 +62,16 @@ const ShowFilm = () => {
     setFilm(data);
   };
 
-  const handleLike = async () => {
-    const data = await addLikedFilm(filmId);
-    setFilm(data);
-  };
-
-  const handleUnlike = async () => {
-    const data = await removeLikedFilm(filmId);
-    setFilm(data);
+  const handleLikeButton = async () => {
+    if (liked === true) {
+      const data = await removeLikedFilm(filmId);
+      setFilm(data);
+      setLiked(false);
+    } else {
+      const data = await addLikedFilm(filmId);
+      setFilm(data);
+      setLiked(true);
+    }
   };
 
   const average = averageRating(film);
@@ -92,11 +96,11 @@ const ShowFilm = () => {
             {average ? <p>Average Rating: {average}</p> : <p>Not yet rated</p>}
             {getLoggedInUserId() && (
               <>
-                <button className="button is-info" onClick={handleLike}>
-                  Like
-                </button>
-                <button className="button is-dark" onClick={handleUnlike}>
-                  Unlike
+                <button
+                  className={liked ? 'button is-info' : 'button is-info'}
+                  onClick={handleLikeButton}
+                >
+                  {liked ? '♥' : '♡'}
                 </button>
               </>
             )}
