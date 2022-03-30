@@ -41,3 +41,19 @@ export const getCurrentUserById = async (userId) => {
   const { data } = await axios.request(options);
   return data;
 };
+
+export const getToken = () => {
+  return window.sessionStorage.getItem('token');
+};
+
+export const setToken = (token) => {
+  window.sessionStorage.setItem('token', token);
+};
+
+export const removeToken = () => {
+  window.sessionStorage.removeItem('token');
+};
+
+export const removeUserId = () => {
+  window.sessionStorage.removeItem('userId');
+};
