@@ -1,22 +1,17 @@
-.hamburger {
+.hamburger-react {
   position: fixed;
+  background-color: teal;
 }
 
-.offcanvas-backdrop .offcanvas-start {
-  // position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  nav.ul {
-    width: 80%;
-    padding-left: 0;
-    padding-top: 10px;
-
-    li {
-      border: 2px lightgrey;
-      list-style: none;
-      margin: 10px 0;
-    }
+ul {
+  position: fixed;
+  background-color: white;
+  border: 2px solid black;
+  width: auto;
+  padding-left: 0;
+  padding-top: 10px li {
+    border: 2px lightgrey;
+    list-style: none;
+    margin: 10px 0;
   }
 }
