@@ -20,6 +20,16 @@ export const getAllFilmsByContinent = async (continent) => {
   return data;
 };
 
+export const getRandomFilm = async () => {
+  const options = {
+    method: 'GET',
+    url: '/api/film/random/randomfilm',
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};
+
 export const createFilm = async (filmData) => {
   const options = {
     method: 'POST',
