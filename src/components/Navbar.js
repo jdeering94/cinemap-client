@@ -5,18 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { removeToken, removeUserId } from '../api/auth';
 import { Divide as Hamburger } from 'hamburger-react';
 
-// const mainNav = document.getElementById('main-nav');
-// document.addEventListener('click', function (event) {
-//   if (!event.target.matches('.nav-menu')) return;
-//   mainNav.classList.toggle('nav-open');
-// });
-
 const Navbar = () => {
   const userId = getLoggedInUserId();
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  // const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
   const navigate = useNavigate();
-  // const params = useParams();
+  const [sideBar, setSideBar] = useState(false); // changes between true and false
+  const toggleMenu = () => setSideBar(!sideBar); // whenever the hamburger is clicked on, change the true/false
   const handleLogout = () => {
     removeToken();
     console.log(userId);
@@ -34,34 +29,42 @@ const Navbar = () => {
   ];
 
   return (
-    <nav id="main-nav" className="nav">
-      <Hamburger color="#000000" toggled={show} toggle={setShow} {...options} />
-      {show && (
-        <div className="nav-menu">
-          <div className="nav-menu-side">
+    <nav
+      className={sideBar ? 'sidebar active' : 'sidebar'}
+      onClick={toggleMenu}
+    >
+      <Hamburger
+        color="#000000"
+        toggled={sideBar}
+        toggle={setSideBar}
+        {...options}
+      />
+      {sideBar && (
+        <div className="menu">
+          <div className="nav-menu">
             <ul className="nav-menu-side-nav">
               <li>
-                <Link onClick={handleClose} to="/">
+                <Link onClick={toggleMenu} to="/">
                   Home
                 </Link>
               </li>
               <li>
-                <Link onClick={handleClose} to="/about">
+                <Link onClick={toggleMenu} to="/about">
                   About
                 </Link>
               </li>
               <li>
-                <Link onClick={handleClose} to="/filmIndex">
+                <Link onClick={toggleMenu} to="/filmIndex">
                   Film Index
                 </Link>
               </li>
               <li>
-                <Link onClick={handleClose} to="/login">
+                <Link onClick={toggleMenu} to="/login">
                   Login
                 </Link>
               </li>
               <li>
-                <Link onClick={handleClose} to="/register">
+                <Link onClick={toggleMenu} to="/register">
                   Register
                 </Link>
               </li>
@@ -69,19 +72,19 @@ const Navbar = () => {
                 <>
                   <li>
                     <Link
-                      onClick={handleClose}
+                      onClick={toggleMenu}
                       to={`/users/${userId}/myFavourites`}
                     >
                       My Favs
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={handleClose} to={'/randomFilm'}>
+                    <Link onClick={toggleMenu} to={'/randomFilm'}>
                       Random Film
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={handleClose} to="/create">
+                    <Link onClick={toggleMenu} to="/create">
                       Create
                     </Link>
                   </li>
@@ -96,7 +99,7 @@ const Navbar = () => {
               )}
               {isAdmin() && (
                 <li>
-                  <Link onClick={handleClose} to="/userList">
+                  <Link onClick={toggleMenu} to="/userList">
                     User List
                   </Link>
                 </li>

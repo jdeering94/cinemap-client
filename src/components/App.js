@@ -16,6 +16,7 @@ import MyFavourites from './MyFavourites';
 import ShowFilm from './ShowFilm';
 import RandomFilm from './RandomFilm';
 import UserList from './UserList';
+import Footer from './Footer';
 
 const App = () => (
   <BrowserRouter>
@@ -34,6 +35,7 @@ const App = () => (
       <Route path="/userList" element={<UserList />}></Route>
       <Route path="/logout" element={<Home />} />
     </Routes>
+    <Footer />
   </BrowserRouter>
 );
 
