@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import WorldMap from 'react-world-map';
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         </div>
       </div>
       <section className="container">
+        <WorldMap />
         <div className="continents">
           <ul>
             <li>
