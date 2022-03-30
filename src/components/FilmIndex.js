@@ -35,16 +35,18 @@ const FilmIndex = () => {
                     <figure className="image is-4by5">
                       <img src={film.img} alt={film.title} />
                     </figure>
-                    {film.comments.length > 0 && (
-                      <div className="card-footer">
+                    <div className="card-footer">
+                      {film.comments.length > 0 && (
                         <p className="card-footer-item">
-                          {averageRating(film)} ⭐️
+                          {averageRating(film).toFixed(1)} / 10 ⭐️
                         </p>
+                      )}
+                      {film.likedBy.length > 0 && (
                         <p className="card-footer-item">
-                          {film.likedBy.length} ❤️
+                          💙 {film.likedBy.length}
                         </p>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </Link>
               </div>
