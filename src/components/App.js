@@ -30,6 +30,7 @@ const App = () => (
       <Route path="/users/:userId/myFavourites" element={<MyFavourites />} />
       <Route path="/film/:filmId" element={<ShowFilm />} />
       <Route path="/randomFilm" element={<RandomFilm />} />
+      <Route path="/logout" element={<Home />} />
     </Routes>
   </BrowserRouter>
 );
