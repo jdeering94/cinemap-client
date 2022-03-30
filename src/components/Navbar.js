@@ -2,19 +2,30 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getLoggedInUserId, isAdmin } from '../lib/authentication';
+import { Link, useNavigate } from 'react-router-dom';
+import { getLoggedInUserId } from '../lib/authentication';
+import { removeToken, removeUserId } from '../api/auth';
 import { Divide as Hamburger } from 'hamburger-react';
+
+// const mainNav = document.getElementById('main-nav');
+// document.addEventListener('click', function (event) {
+//   if (!event.target.matches('.nav-menu')) return;
+//   mainNav.classList.toggle('nav-open');
+// });
 
 const Navbar = () => {
   const userId = getLoggedInUserId();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  const navigate = useNavigate();
   // const params = useParams();
-  // const handleLogout = () => {
-  //   removeToken()
-  //   removeUserId()
-  //   setIsLoggedIn(false)
-  //   history.push('/')
-  // }
+  const handleLogout = () => {
+    removeToken();
+    console.log(userId);
+    removeUserId();
+    navigate('/');
+    console.log('logged out');
+  };
 
   const options = [
     {
@@ -25,12 +36,12 @@ const Navbar = () => {
   ];
 
   return (
-    <nav>
+    <nav id="main-nav" className="nav">
       <Hamburger color="#000000" toggled={show} toggle={setShow} {...options} />
       {show && (
-        <div>
-          <div>
-            <ul className="navlist">
+        <div className="nav-menu">
+          <div className="nav-menu-side">
+            <ul className="nav-menu-side-nav">
               <li>
                 <Link onClick={handleClose} to="/">
                   Home
@@ -77,7 +88,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={handleClose} to="/logout">
+                    <Link onClick={handleLogout} to="/logout">
                       Logout
                     </Link>
                   </li>
