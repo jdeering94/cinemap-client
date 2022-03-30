@@ -8,16 +8,33 @@ body {
   background-color: teal;
 }
 
-ul.nav-menu-side-nav {
-  position: fixed;
-  background-color: teal;
+.nav-menu-side-nav {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: none;
+  // justify-content: left;
+  align-items: center;
   z-index: 100;
-  transition: all 0.25s;
-  padding: 24px 0px;
-  width: 20%;
+  // transition: all 0.25s;
+  padding: 10px 10px;
+  width: 100%;
   li {
-    border: 2px lightgrey;
-    list-style: none;
-    margin: 10px 0;
+    margin-right: 70px;
+    background-color: white;
+    padding: 10px;
+    height: 5em;
+    width: 40px;
   }
+}
+
+.sidebar {
+  position: fixed;
+  transition: all 0.5s ease-in-out; // just makes it slide in and out slowly rather than just appearing
+  left: 0;
+  transform: translateX(0);
+}
+.active {
+  transform: translateX(75%);
 }
