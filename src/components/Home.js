@@ -1,8 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import WorldMap from 'react-world-map';
 
 const Home = () => {
+  const [selected, onSelect] = React.useState(null);
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    console.log('selected continent', selected);
+    switch (selected) {
+      case 'na':
+        navigate('/film/continent/North America');
+        break;
+      case 'sa':
+        navigate('/film/continent/South America');
+        break;
+      case 'eu':
+        navigate('/film/continent/Europe');
+        break;
+      case 'as':
+        navigate('/film/continent/Asia');
+        break;
+      case 'af':
+        navigate('/film/continent/Africa');
+        break;
+      case 'oc':
+        navigate('/film/continent/Oceania');
+        break;
+    }
+  }, [selected]);
+
   return (
     <section className="hero is-full-height-with-navbar">
       <div className="hero-body">
@@ -13,14 +40,11 @@ const Home = () => {
         </div>
       </div>
       <section className="container">
-        <WorldMap />
-        <div className="continents">
+        <WorldMap selected={selected} onSelect={onSelect} />
+        {/* <div className="continents">
           <ul>
             <li>
               <Link to={'/film/continent/Africa'}>Africa</Link>
-            </li>
-            <li>
-              <Link to={'/film/continent/Antarctica'}>Antarctica</Link>
             </li>
             <li>
               <Link to={'/film/continent/Asia'}>Asia</Link>
@@ -38,7 +62,7 @@ const Home = () => {
               <Link to={'/film/continent/South America'}>South America</Link>
             </li>
           </ul>
-        </div>
+        </div> */}
       </section>
     </section>
   );

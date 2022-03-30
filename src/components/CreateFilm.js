@@ -71,7 +71,7 @@ function CreateNewFilm() {
               <div className="control">
                 <input
                   className="input"
-                  placeholder="Europe, Asia, Africa, Oceania, North America, South America or Antarctica"
+                  placeholder="Europe, Asia, Africa, Oceania, North America, or South America"
                   name="continent"
                   onChange={handleChange}
                   value={newFilm.continent}
