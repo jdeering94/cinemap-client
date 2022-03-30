@@ -17,6 +17,7 @@ const FilmIndex = () => {
     };
     getData();
   }, []);
+  console.log(films);
 
   return (
     <>
@@ -35,7 +36,14 @@ const FilmIndex = () => {
                       <img src={film.img} alt={film.title} />
                     </figure>
                     {film.comments.length > 0 && (
-                      <p>{averageRating(film)} ⭐️</p>
+                      <div className="card-footer">
+                        <p className="card-footer-item">
+                          {averageRating(film)} ⭐️
+                        </p>
+                        <p className="card-footer-item">
+                          {film.likedBy.length} ❤️
+                        </p>
+                      </div>
                     )}
                   </div>
                 </Link>
