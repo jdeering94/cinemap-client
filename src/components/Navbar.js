@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { getLoggedInUserId, isAdmin } from '../lib/authentication';
 import { Link, useNavigate } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/authentication';
 import { removeToken, removeUserId } from '../api/auth';
@@ -93,6 +95,13 @@ const Navbar = () => {
                 </>
               ) : (
                 <></>
+              )}
+              {isAdmin() && (
+                <li>
+                  <Link onClick={handleClose} to="/userList">
+                    User List
+                  </Link>
+                </li>
               )}
             </ul>
           </div>
