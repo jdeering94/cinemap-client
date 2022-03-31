@@ -4,6 +4,7 @@ import {
   getFilmById,
   createComment,
   deleteComment,
+  editComment,
   addLikedFilm,
   removeLikedFilm,
 } from '../api/films';
@@ -70,6 +71,19 @@ const ShowFilm = () => {
     setFilm(data);
   };
 
+  const handleCommentEdit = async () => {
+    const commentObject = film.comments.find(
+      (comment) => comment.createdBy === getLoggedInUserId()
+    );
+    const commentId = commentObject._id;
+    console.log(commentId);
+    const data = await editComment(filmId, commentId, {
+      text: commentValue,
+      rating: ratingValue,
+    });
+    setFilm(data);
+  };
+
   const handleLikeButton = async () => {
     if (liked === true) {
       const data = await removeLikedFilm(filmId);
@@ -86,6 +100,16 @@ const ShowFilm = () => {
 
   const canDelete = (comment) => {
     if (getLoggedInUserId() === comment.createdBy || isAdmin()) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const hasReviewed = () => {
+    if (
+      film.comments.some((comment) => comment.createdBy === getLoggedInUserId())
+    ) {
       return true;
     } else {
       return false;
@@ -123,10 +147,12 @@ const ShowFilm = () => {
           </div>
 
           {getLoggedInUserId() && (
-            <form onSubmit={handleCommentSubmit}>
+            <form
+              onSubmit={hasReviewed() ? handleCommentEdit : handleCommentSubmit}
+            >
               <div className="form">
                 <label htmlFor="comment" className="label">
-                  Post a Review!
+                  {hasReviewed() ? 'Edit your Review!' : 'Post a Review!'}
                 </label>
                 <div className="control">
                   <textarea
@@ -140,7 +166,11 @@ const ShowFilm = () => {
                     value={ratingValue}
                     iconsCount={10}
                   />
-                  <input type="submit" value="Post Review" className="button" />
+                  <input
+                    type="submit"
+                    value={hasReviewed() ? 'Edit Review' : 'Post Review'}
+                    className="button"
+                  />
                 </div>
               </div>
             </form>
