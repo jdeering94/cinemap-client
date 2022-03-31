@@ -40,7 +40,7 @@ const Navbar = () => {
         {...options}
       />
       {sideBar && (
-        <div className="menu">
+        <div className="navbar">
           <div className="nav-menu">
             <ul className="nav-menu-side-nav">
               <li>
