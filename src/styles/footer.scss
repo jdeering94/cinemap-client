@@ -1,11 +1,15 @@
 .footer {
-  position: fixed;
-  display: inline-block;
-  height: 5px;
-  background-color: white;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  height: 35px;
+  background-color: black;
+  color: white;
+  margin-top: 200px;
   padding-top: 0px;
   padding-bottom: 0px;
   .footer-info {
-    font-size: 3px;
+    font-size: 12px;
+    font-weight: bold;
   }
 }
