@@ -28,7 +28,10 @@ const MyFavourites = () => {
         <div className="container">
           <div className="columns is-multiline">
             {films.map((film) => (
-              <div key={film._id} className="column card m-3 is-one-fifth">
+              <div
+                key={film._id}
+                className="column card m-3 is-one-fifth film-card"
+              >
                 <Link to={`/film/${film._id}`}>
                   <div className="card-image">
                     <figure className="image is-4by5">

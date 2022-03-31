@@ -47,7 +47,7 @@ const FilmsByContinent = () => {
         <div className="container">
           <div className="columns is-multiline">
             {films.map((film) => (
-              <div key={film._id} className="column card m-3 is-one-fifth">
+              <div key={film._id} className="column card m-3 is-one-fifth film-card">
                 {isAdmin() && (
                   <FontAwesomeIcon
                     onClick={() => handleDeleteFilm(film._id)}

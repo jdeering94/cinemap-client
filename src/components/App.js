@@ -4,6 +4,8 @@ import '../styles/style.scss';
 import '../styles/navbar.scss';
 import '../styles/home.scss';
 import '../styles/footer.scss';
+import '../styles/filmIndex.scss';
+import '../styles/likeButton.scss';
 
 import Home from './Home';
 import About from './About';
