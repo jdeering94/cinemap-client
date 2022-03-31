@@ -3,7 +3,7 @@ import React from 'react';
 const About = () => {
   return (
     <>
-      <h1 className="title has-text-centered">About WorldFilm</h1>
+      <h1 className="title is-1 has-text-centered">About WorldFilm</h1>
       <div className="content is-small">
         <p>Please note this is draft content meant as a placeholder!</p>
       </div>

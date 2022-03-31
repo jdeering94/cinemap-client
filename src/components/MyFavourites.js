@@ -23,7 +23,7 @@ const MyFavourites = () => {
 
   return (
     <>
-      <h1 className="title has-text-centered">My Favs</h1>
+      <h1 className="title is-1 has-text-centered">My Favs</h1>
       {films ? (
         <div className="container">
           <div className="columns is-multiline">

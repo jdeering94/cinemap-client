@@ -25,7 +25,7 @@ const UserList = () => {
 
   return (
     <>
-      <h1 className="title">User List</h1>
+      <h1 className="title is-1 has-text-centered">User List</h1>
       {users ? (
         <div className="container">
           <div className="columns is-multiline">
