@@ -3,14 +3,14 @@ import React from 'react';
 const About = () => {
   return (
     <>
-      <h1 className="title">About WorldFilm</h1>
+      <h1 className="title has-text-centered">About WorldFilm</h1>
       <div className="content is-small">
         <p>Please note this is draft content meant as a placeholder!</p>
       </div>
       <div className="content is-normal">
         <h2>Product</h2>
         <p>
-          What it does, who it's for and why it's great. Misson / vision /
+          What it does, who its for and why its great. Misson / vision /
           elevator pitch, etc.
         </p>
         <p>
@@ -32,7 +32,7 @@ const About = () => {
         </p>
         <p>
           Thank you for visiting - and for being part of our mission to help
-          people discover the joy of world cinema! We've learned a lot making
+          people discover the joy of world cinema! We have learned a lot making
           this site and we hope you enjoy using it!
         </p>
       </div>
@@ -47,18 +47,18 @@ const About = () => {
         <h2>Have we missed a gem?</h2>
         <p>
           Our passion is providing an exquisitely curated Smörgåsbord of films
-          that are worth your time and attention. We're contastly looking for
-          new films or rediscovering classics may have overlooked. If there's a
-          film you can't believe we haven't showcased yet, please let us know at{' '}
-          <a href="mailto:gaps@worldfilm">gaps@worldfilm</a> and we'll consider
-          adding it to our growing comendium of cinematic delights.
+          that are worth your time and attention. We are constantly looking for
+          new films or rediscovering classics may have overlooked. If there is a
+          film you cant believe we havent showcased yet, please let us know at{' '}
+          <a href="mailto:gaps@worldfilm">gaps@worldfilm</a> and we will
+          consider adding it to our growing comendium of cinematic delights.
         </p>
         <h2>Spotted something wrong?</h2>
         <p>
           We may be peerless pedants and committed curators of cinema, but that
-          doesn't mean we're not human. If you've noticed any errors or
+          does not mean we are not human. If you have noticed any errors or
           innacuracies in our content, please contact our editorial team - and
-          accept our apologies. We'll check and if necesary correct any
+          accept our apologies. We will check and if necesary correct any
           innacuracies as soon as we hear about them. at{' '}
           <a href="mailto:correct@worldfilm">correct@worldfilm</a> or raise an
           issue through our{' '}

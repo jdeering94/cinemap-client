@@ -40,7 +40,7 @@ const FilmIndex = () => {
 
   return (
     <>
-      <h1 className="title">Film Index</h1>
+      <h1 className="title has-text-centered">Film Index</h1>
       {films ? (
         <div className="container">
           <div className="columns is-multiline">
