@@ -24,9 +24,9 @@ const Register = () => {
     setPasswordConfirmationValue(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    registerUser({
+    await registerUser({
       username: usernameValue,
       email: emailValue,
       password: passwordValue,
