@@ -34,7 +34,7 @@ const Home = () => {
     <section className="hero is-full-height-with-navbar">
       <div className="hero-body">
         <div className="container">
-          <p className="title has-text-centered">
+          <p className="title is-1 has-text-centered ">
             <h1>World Films</h1>
           </p>
         </div>

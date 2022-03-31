@@ -1,5 +1,10 @@
 @import '~bulma/bulma.sass';
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
 body {
   min-height: 100vh;
+  h1 {
+    font-family: 'Caveat', cursive;
+  }
   background-color: white;
 }
