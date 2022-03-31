@@ -31,7 +31,7 @@ const Home = () => {
   }, [selected]);
 
   return (
-    <section className="hero is-full-height-with-navbar">
+    <section className="hero">
       <div className="hero-body">
         <div className="container">
           <p className="title is-1 has-text-centered ">
