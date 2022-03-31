@@ -3,10 +3,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import '../styles/style.scss';
 import '../styles/navbar.scss';
 import '../styles/home.scss';
+import '../styles/header.scss';
 import '../styles/footer.scss';
 import '../styles/filmIndex.scss';
 import '../styles/likeButton.scss';
-
+import Navbar from './Navbar';
 import Home from './Home';
 import About from './About';
 import FilmsByContinent from './FilmsByContinent';
@@ -14,15 +15,16 @@ import FilmIndex from './FilmIndex';
 import Login from './auth/Login.js';
 import Register from './auth/Register.js';
 import CreateFilm from './CreateFilm';
-import Navbar from './Navbar';
 import MyFavourites from './MyFavourites';
 import ShowFilm from './ShowFilm';
 import RandomFilm from './RandomFilm';
 import UserList from './UserList';
 import Footer from './Footer';
+import Header from './Header';
 
 const App = () => (
   <BrowserRouter>
+    <Header />
     <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
