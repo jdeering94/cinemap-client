@@ -63,7 +63,7 @@ const FilmIndex = () => {
                     </figure>
                   </div>
                   <div className="is-flex is-justify-content-space-between">
-                    <p className="">{film.title}</p>
+                    <p className="card-text">{film.title}</p>
                     <p className="">{flag(`${film.country}`)}</p>
                   </div>
                   {/* <p>{film.country}</p> */}
