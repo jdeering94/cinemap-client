@@ -14,9 +14,9 @@ const Login = () => {
     setPasswordValue(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    loginUser({ email: emailValue, password: passwordValue });
+    await loginUser({ email: emailValue, password: passwordValue });
     navigate('/');
   };
 
