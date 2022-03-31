@@ -84,6 +84,14 @@ const ShowFilm = () => {
 
   const average = averageRating(film);
 
+  const canDelete = (comment) => {
+    if (getLoggedInUserId() === comment.createdBy || isAdmin()) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
     <div className="container">
       <div className="columns">
@@ -105,7 +113,7 @@ const ShowFilm = () => {
             {getLoggedInUserId() && (
               <>
                 <button
-                  className={liked ? 'button is-info' : 'button is-info'}
+                  className="like-button button is-info"
                   onClick={handleLikeButton}
                 >
                   {liked ? '♥' : '♡'}
@@ -132,7 +140,7 @@ const ShowFilm = () => {
                     value={ratingValue}
                     iconsCount={10}
                   />
-                  <input type="submit" value="Post Review" />
+                  <input type="submit" value="Post Review" className="button" />
                 </div>
               </div>
             </form>
@@ -147,7 +155,7 @@ const ShowFilm = () => {
                     <p>{comment.text}</p>
                     <p>{comment.rating} ⭐️</p>
                     <p>{comment.username}</p>
-                    {getLoggedInUserId() === comment.createdBy && (
+                    {canDelete(comment) && (
                       <button
                         key={comment._id}
                         type="button"

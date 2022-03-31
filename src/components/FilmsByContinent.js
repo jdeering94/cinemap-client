@@ -27,7 +27,10 @@ const FilmsByContinent = () => {
         <div className="container">
           <div className="columns is-multiline">
             {films.map((film) => (
-              <div key={film._id} className="column card m-3 is-one-fifth">
+              <div
+                key={film._id}
+                className="column card m-3 is-one-fifth film-card"
+              >
                 <Link to={`/film/${film._id}`}>
                   <h2 className="card-header">
                     {film.title} - {film.country}

@@ -84,11 +84,6 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={toggleMenu} to="/create">
-                      Create
-                    </Link>
-                  </li>
-                  <li>
                     <Link onClick={handleLogout} to="/logout">
                       Logout
                     </Link>
@@ -98,11 +93,18 @@ const Navbar = () => {
                 <></>
               )}
               {isAdmin() && (
-                <li>
-                  <Link onClick={toggleMenu} to="/userList">
-                    User List
-                  </Link>
-                </li>
+                <>
+                  <li>
+                    <Link onClick={toggleMenu} to="/userList">
+                      User List
+                    </Link>
+                  </li>
+                  <li>
+                    <Link onClick={toggleMenu} to="/create">
+                      Create
+                    </Link>
+                  </li>
+                </>
               )}
             </ul>
           </div>
