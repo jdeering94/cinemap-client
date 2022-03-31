@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getAllFilms } from '../api/films';
 import { averageRating } from '../lib/ratingFunctions';
-import { getRandomFlag } from '../lib/flagHelper';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+const { flag } = require('country-emoji');
 
 const FilmIndex = () => {
   const [films, setFilms] = React.useState(null);
@@ -28,6 +30,11 @@ const FilmIndex = () => {
           <div className="columns is-multiline">
             {films.map((film) => (
               <div key={film._id} className="column card m-3 is-one-fifth">
+                <FontAwesomeIcon
+                  onClick={() => console.log('clicked x')}
+                  className="x-mark"
+                  icon={faXmark}
+                />
                 <Link to={`/film/${film._id}`}>
                   <div className="card-image">
                     <figure className="image is-4by5">
@@ -36,7 +43,7 @@ const FilmIndex = () => {
                   </div>
                   <div className="is-flex is-justify-content-space-between">
                     <p className="">{film.title}</p>
-                    <p className="">{getRandomFlag()}</p>
+                    <p className="">{flag(`${film.country}`)}</p>
                   </div>
                   {/* <p>{film.country}</p> */}
                   <div className="card-footer">
