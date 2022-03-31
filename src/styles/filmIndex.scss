@@ -1,9 +1,19 @@
 .film-card {
+  transition: 0.25s ease-in-out;
+  .card-text{
+    color: black;
+  }
   &:hover {
     cursor: pointer;
-    background-color: orange;
-    color: #000;
+    background-color: teal;
+    color: white;
     transform: scale(1.1);
+    .card-text{
+      color: aliceblue;
+    }
+    .x-mark {
+      color: antiquewhite;
+    }
   }
 }
 
