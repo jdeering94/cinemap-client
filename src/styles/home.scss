@@ -4,11 +4,13 @@
 }
 
 .map-selected {
+  transition: 0.25s ease-in-out;
   fill: #ffdc00;
 }
 
 .map-unselected {
-  fill: #39cccc;
+  transition: 0.25s ease-in-out;
+  fill: #116e24f0;
 }
 
 .map-selected:hover,
