@@ -115,3 +115,16 @@ export const removeLikedFilm = async (filmId) => {
   const { data } = await axios.request(options);
   return data;
 };
+
+export const deleteFilm = async (filmId) => {
+  const options = {
+    method: 'DELETE',
+    url: `/api/film/${filmId}`,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};

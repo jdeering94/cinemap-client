@@ -5,6 +5,8 @@ import { averageRating } from '../lib/ratingFunctions';
 import { getRandomFlag } from '../lib/flagHelper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { deleteFilm } from '../api/films';
+import { isAdmin } from '../lib/authentication';
 
 const FilmIndex = () => {
   const [films, setFilms] = React.useState(null);
@@ -20,7 +22,20 @@ const FilmIndex = () => {
     };
     getData();
   }, []);
-  console.log(films);
+
+  const handleDeleteFilm = async (filmId) => {
+    if (isAdmin()) {
+      await deleteFilm(filmId);
+      const films = await getAllFilms();
+      setFilms(
+        films.sort((a, b) =>
+          a.title > b.title ? 1 : b.title > a.title ? -1 : 0
+        )
+      );
+    } else {
+      window.alert('You must be an Admin to delete a Film');
+    }
+  };
 
   return (
     <>
@@ -30,11 +45,13 @@ const FilmIndex = () => {
           <div className="columns is-multiline">
             {films.map((film) => (
               <div key={film._id} className="column card m-3 is-one-fifth">
-                <FontAwesomeIcon
-                  onClick={() => console.log('clicked x')}
-                  className="x-mark"
-                  icon={faXmark}
-                />
+                {isAdmin() && (
+                  <FontAwesomeIcon
+                    onClick={() => handleDeleteFilm(film._id)}
+                    className="x-mark"
+                    icon={faXmark}
+                  />
+                )}
                 <Link to={`/film/${film._id}`}>
                   <div className="card-image">
                     <figure className="image is-4by5">
