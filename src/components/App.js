@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import '../styles/style.scss';
 import '../styles/navbar.scss';
 import '../styles/home.scss';
+import '../styles/footer.scss';
 
 import Home from './Home';
 import About from './About';
 import FilmsByContinent from './FilmsByContinent';
-import '../styles/style.scss';
 import FilmIndex from './FilmIndex';
 import Login from './auth/Login.js';
 import Register from './auth/Register.js';
