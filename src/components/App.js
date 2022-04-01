@@ -21,6 +21,11 @@ import RandomFilm from './RandomFilm';
 import UserList from './UserList';
 import Footer from './Footer';
 import Header from './Header';
+import axios from 'axios';
+
+if (process.env.NODE_ENV === 'production') {
+  axios.defaults.baseURL = 'https://cinemap-ga.herokuapp.com';
+}
 
 const App = () => (
   <BrowserRouter>
