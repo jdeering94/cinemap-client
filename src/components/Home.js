@@ -34,35 +34,11 @@ const Home = () => {
     <section className="hero">
       <div className="hero-body">
         <div className="container">
-          <p className="title is-1 has-text-centered ">
-            {/* <h1>World Films</h1> */}
-          </p>
+          <p className="title is-1 has-text-centered "></p>
         </div>
       </div>
       <section className="container">
         <WorldMap selected={selected} onSelect={onSelect} />
-        {/* <div className="continents">
-          <ul>
-            <li>
-              <Link to={'/film/continent/Africa'}>Africa</Link>
-            </li>
-            <li>
-              <Link to={'/film/continent/Asia'}>Asia</Link>
-            </li>
-            <li>
-              <Link to={'/film/continent/Oceania'}>Oceania</Link>
-            </li>
-            <li>
-              <Link to={'/film/continent/Europe'}>Europe</Link>
-            </li>
-            <li>
-              <Link to={'/film/continent/North America'}>North America</Link>
-            </li>
-            <li>
-              <Link to={'/film/continent/South America'}>South America</Link>
-            </li>
-          </ul>
-        </div> */}
       </section>
     </section>
   );
