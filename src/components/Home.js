@@ -35,7 +35,7 @@ const Home = () => {
       <div className="hero-body">
         <div className="container">
           <p className="title is-1 has-text-centered ">
-            <h1>World Films</h1>
+            {/* <h1>World Films</h1> */}
           </p>
         </div>
       </div>

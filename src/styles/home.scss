@@ -10,11 +10,16 @@
 
 .map-unselected {
   transition: 0.25s ease-in-out;
-  fill: #116e24f0;
+  fill: rgb(247, 149, 2);
 }
 
 .map-selected:hover,
 .map-unselected:hover {
   cursor: pointer;
-  fill: #ffdc00;
+  fill: teal;
+}
+
+.map-img {
+  width: 800px;
+  height: 443px;
 }

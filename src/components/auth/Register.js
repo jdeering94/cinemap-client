@@ -37,9 +37,7 @@ const Register = () => {
 
   return (
     <>
-      <h1 className="title is-1 has-text-centered">
-        World Films Registration Page
-      </h1>
+      <h1 className="title is-1 has-text-centered">Register and Explore</h1>
       <section className="section">
         <div className="container">
           <div className="column is-half is-offset-one-quarter box">
