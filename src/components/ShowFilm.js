@@ -9,7 +9,11 @@ import {
   removeLikedFilm,
 } from '../api/films';
 import { useParams } from 'react-router-dom';
-import { getLoggedInUserId, isAdmin } from '../lib/authentication';
+import {
+  getLoggedInUserId,
+  getLoggedInUsername,
+  isAdmin,
+} from '../lib/authentication';
 import { averageRating, isLiked } from '../lib/ratingFunctions';
 import { getCurrentUserById } from '../api/auth';
 
@@ -18,15 +22,14 @@ const ShowFilm = () => {
   const [film, setFilm] = React.useState(null);
   const [commentValue, setCommentValue] = React.useState('');
   const [ratingValue, setRatingValue] = React.useState(1);
-  const [username, SetUsername] = React.useState('');
   const [liked, setLiked] = React.useState(null);
+  const username = getLoggedInUsername();
 
   React.useEffect(() => {
     const getData = async () => {
       const filmdata = await getFilmById(filmId);
       if (window.sessionStorage.token) {
         const user = await getCurrentUserById(getLoggedInUserId());
-        SetUsername(user.username);
         setLiked(isLiked(user, filmdata));
       }
       setFilm(filmdata);

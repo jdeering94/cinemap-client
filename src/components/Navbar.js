@@ -1,14 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
-import { getLoggedInUserId, isAdmin } from '../lib/authentication';
+import {
+  getLoggedInUserId,
+  getLoggedInUsername,
+  isAdmin,
+} from '../lib/authentication';
 import { Link, useNavigate } from 'react-router-dom';
 import { removeToken, removeUserId } from '../api/auth';
 import { Divide as Hamburger } from 'hamburger-react';
 
 const Navbar = () => {
   const userId = getLoggedInUserId();
-  // const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
+  const username = getLoggedInUsername();
   const navigate = useNavigate();
   const [sideBar, setSideBar] = useState(false); // changes between true and false
   const toggleMenu = () => setSideBar(!sideBar); // whenever the hamburger is clicked on, change the true/false
@@ -43,6 +46,11 @@ const Navbar = () => {
         <div className="menu">
           <div className="nav-menu">
             <ul className="nav-menu-side-nav">
+              {username && (
+                <li>
+                  <p className="">Hello {username}!</p>
+                </li>
+              )}
               <li>
                 <Link onClick={toggleMenu} to="/">
                   Home
