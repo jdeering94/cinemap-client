@@ -39,7 +39,9 @@ const MyFavourites = () => {
                     </figure>
                   </div>
                   <div className="is-flex is-justify-content-space-between">
-                    <p className="card-text">{film.title}</p>
+                    <p className="card-text">
+                      <strong>{film.title}</strong>
+                    </p>
                     <p className="">{flag(`${film.country}`)}</p>
                   </div>
                   <div className="card-footer">

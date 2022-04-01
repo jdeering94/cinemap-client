@@ -127,13 +127,34 @@ const ShowFilm = () => {
         <div className="column is-half">
           <div className="card p-6">
             <h2 className="title">{film.title}</h2>
-            <p>Country of Origin: {film.country}</p>
-            <p>Director: {film.director}</p>
-            <p>Released in: {film.releaseYear}</p>
-            <p>Runtime: {film.runTime} min</p>
-            <p>Description: {film.description}</p>
-            <p>Likes: {film.likedBy.length}</p>
-            {average ? <p>Average Rating: {average}</p> : <p>Not yet rated</p>}
+            <p>
+              <strong>Country of Origin:</strong> {film.country}
+            </p>
+            <p>
+              <strong>Director: </strong>
+              {film.director}
+            </p>
+            <p>
+              <strong>Released in:</strong> {film.releaseYear}
+            </p>
+            <p>
+              <strong>Runtime:</strong> {film.runTime} min
+            </p>
+            <p>
+              <strong>Description:</strong> {film.description}
+            </p>
+            <p>
+              <strong>Likes:</strong> {film.likedBy.length}
+            </p>
+            {average ? (
+              <p>
+                <strong>Average Rating:</strong> {average}
+              </p>
+            ) : (
+              <p>
+                <strong>Not yet rated</strong>
+              </p>
+            )}
             {getLoggedInUserId() && (
               <>
                 <button
