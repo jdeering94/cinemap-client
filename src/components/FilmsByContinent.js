@@ -54,7 +54,7 @@ const FilmsByContinent = () => {
             {films.map((film) => (
               <div
                 key={film._id}
-                className="column card m-3 is-one-fifth film-card"
+                className="column card m-5 is-one-fifth film-card"
               >
                 {isAdmin() && (
                   <FontAwesomeIcon

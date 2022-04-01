@@ -53,7 +53,7 @@ const Navbar = () => {
               )}
               <li>
                 <Link onClick={toggleMenu} to="/">
-                  Home
+                  Map
                 </Link>
               </li>
               <li>
@@ -62,8 +62,8 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link onClick={toggleMenu} to="/filmIndex">
-                  Film Index
+                <Link onClick={toggleMenu} to="/register">
+                  Register
                 </Link>
               </li>
               <li>
@@ -72,8 +72,8 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link onClick={toggleMenu} to="/register">
-                  Register
+                <Link onClick={toggleMenu} to="/filmIndex">
+                  Film Index
                 </Link>
               </li>
               {userId ? (
