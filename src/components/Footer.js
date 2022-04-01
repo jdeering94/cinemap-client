@@ -7,11 +7,15 @@ const Footer = () => {
     <footer>
       <section className="footer">
         <div className="footer-info">
-          <span>Cinemap - Discover. Enjoy. Discuss.</span>
-          <span className="rights">&copy; 2022 All rights reserved</span>
           <p>
-            Find Us on GitHub <ImGithub />
+            <a href="https://github.com/jdeering94/ga-project-3-api">
+              {' '}
+              Visit us on GitHub
+              <ImGithub />
+            </a>
           </p>
+          <span>CineMap </span>
+          <span className="rights">&copy; 2022 All rights reserved</span>
         </div>
       </section>
     </footer>
